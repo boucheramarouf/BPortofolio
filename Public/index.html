@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Ingénieure Data & IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .leopard-border {
+            border-bottom: 8px solid transparent;
+            border-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2IiBoZWlnaHQ9IjYiPgo8cmVjdCB3aWR0aD0iNiIgaGVpZ2h0PSI2IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMNiA2WiIgc3Ryb2tlPSIjZTZlNmU2IiBzdHJva2Utd2lkdGg9IjEiPjwvcGF0aD4KPHBhdGggZD0iTTYgMEwwIDZaIiBzdHJva2U9IiNlNmU2ZTYiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=') 10 round;
+        }
+        
+        .skill-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-icon:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 24px;
+            height: calc(100% - 24px);
+            width: 2px;
+            background: #d1d5db;
+        }
+        
+        .contact-card {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            width: 90%;
+            max-width: 400px;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white shadow-sm leopard-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-xl font-semibold heading-font text-gray-900 flex items-center">
+                        <span class="bg-amber-900 w-8 h-8 rounded-full flex items-center justify-center text-white mr-2">B</span>
+                        Portfolio
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-700 hover:text-amber-900 transition">À propos</a>
+                    <a href="#skills" class="text-gray-700 hover:text-amber-900 transition">Compétences</a>
+                    <a href="#projects" class="text-gray-700 hover:text-amber-900 transition">Projets</a>
+                    <a href="#experience" class="text-gray-700 hover:text-amber-900 transition">Expérience</a>
+                    <a href="#hobbies" class="text-gray-700 hover:text-amber-900 transition">Centres d'intérêt</a>
+                    <a href="#contact" class="text-gray-700 hover:text-amber-900 transition">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-amber-900">À propos</a>
+                <a href="#skills" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-amber-900">Compétences</a>
+                <a href="#projects" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-amber-900">Projets</a>
+                <a href="#experience" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-amber-900">Expérience</a>
+                <a href="#hobbies" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-amber-900">Centres d'intérêt</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-amber-900">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-24 pb-16 md:pt-32 md:pb-24 bg-white relative overflow-hidden">
+    <!-- Background léopard avec un overlay dégradé -->
+    <div class="absolute inset-0 w-full h-full z-0" style="background-image: url('/Photos/leopard-print.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+        <!-- Overlay pour rendre le texte lisible -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white opacity-50"></div>
+    </div>
+
+    <!-- Effet Wavy (onde) -->
+    <div class="absolute top-0 left-0 w-full h-16 z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" class="w-full h-full fill-current text-white">
+            <path d="M0 0 C300 100 600 100 900 0 S1500 100 1800 0 V120 H0 Z"></path>
+        </svg>
+    </div>
+
+    <!-- Contenu de la section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="md:flex items-center">
+            <!-- Texte de la section -->
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold heading-font text-gray-900 mb-6">
+                    Ingénieure Data & <span class="text-amber-900">IA</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-lg">
+                    Alliant excellence technique et solutions élégantes. Passionnée par la transformation des données en insights intelligents.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#projects" class="bg-amber-900 hover:bg-amber-800 text-white px-6 py-3 rounded-md font-medium transition">
+                        Voir mes projets
+                    </a>
+                    <a href="#contact" id="contact-btn" class="border border-amber-900 text-amber-900 hover:bg-amber-50 px-6 py-3 rounded-md font-medium transition">
+                        Contactez-moi
+                    </a>
+                </div>
+            </div>
+
+            <!-- Image du profil -->
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-amber-900 shadow-lg">
+                    <!-- Photo de profil -->
+                    <div class="absolute inset-0 bg-amber-100 flex items-center justify-center">
+                        <span class="text-6xl text-amber-900"><img src="/Photos/profile black.png" alt="Profile"/></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-amber-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold heading-font text-gray-900 mb-4">À propos de moi</h2>
+                <div class="w-20 h-1 bg-amber-900 mx-auto"></div>
+            </div>
+            
+            <div class="md:flex items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-amber-900 shadow-lg">
+                        <!-- Placeholder pour ta photo -->
+                        <div class="w-full h-full bg-amber-100 flex items-center justify-center">
+                            <span class="text-6xl text-amber-900"><img src="/Photos/about.jpg" /></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-bold heading-font text-gray-900 mb-4">Élégante. Intelligente. Déterminée.</h3>
+                    <p class="text-gray-700 mb-6">
+                        Je suis une étudiante passionnée en Ingénierie des Données et IA à l'UPJV, avec une solide formation en Génie Logiciel. Mon parcours est marqué par l'excellence, la résilience et le dépassement des stéréotypes.
+                    </p>
+                    <p class="text-gray-700 mb-6">
+                        <span class="font-semibold text-amber-900">Un voile ne m'a jamais empêchée et ne m'empêchera jamais d'être la meilleure.</span> Sous celui-ci se cache un esprit brillant capable de résoudre des problèmes complexes et de créer des solutions innovantes.
+                    </p>
+                    <p class="text-gray-700 mb-6">
+                        Quand je ne code pas, vous pouvez me trouver à Paris avec mes copines, ou à apprécier l'élégance intemporelle des costumes noirs.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-white px-4 py-2 rounded-full shadow-sm flex items-center">
+                            <i class="fas fa-globe text-amber-900 mr-2"></i>
+                            <span>Anglais, Français, Arabe</span>
+                        </div>
+                        <div class="bg-white px-4 py-2 rounded-full shadow-sm flex items-center">
+                            <i class="fas fa-map-marker-alt text-amber-900 mr-2"></i>
+                            <span>France</span>
+                        </div>
+                        <div class="bg-white px-4 py-2 rounded-full shadow-sm flex items-center">
+                            <i class="fas fa-horse text-amber-900 mr-2"></i>
+                            <span>Équitation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold heading-font text-gray-900 mb-4">Compétences Techniques</h2>
+                <div class="w-20 h-1 bg-amber-900 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <!-- Langages de programmation -->
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <h4 class="font-medium">Java</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h4 class="font-medium">Python</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h4 class="font-medium">Scala</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fab fa-php"></i>
+                    </div>
+                    <h4 class="font-medium">PHP</h4>
+                </div>
+                
+                <!-- Frameworks -->
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4 class="font-medium">Spring Boot</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fab fa-laravel"></i>
+                    </div>
+                    <h4 class="font-medium">Laravel</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fab fa-symfony"></i>
+                    </div>
+                    <h4 class="font-medium">Symfony</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h4 class="font-medium">Flask</h4>
+                </div>
+                
+                <!-- Data & IA -->
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4 class="font-medium">Machine Learning</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h4 class="font-medium">Deep Learning</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h4 class="font-medium">Apache Spark</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h4 class="font-medium">Apache Tika</h4>
+                </div>
+                
+                <!-- Bases de données -->
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h4 class="font-medium">MySQL</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h4 class="font-medium">PostgreSQL</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h4 class="font-medium">NoSQL</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <h4 class="font-medium">Data Warehousing</h4>
+                </div>
+                
+                <!-- Frontend -->
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h4 class="font-medium">HTML5</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h4 class="font-medium">CSS3</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h4 class="font-medium">JavaScript</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fab fa-vuejs"></i>
+                    </div>
+                    <h4 class="font-medium">JavaFX</h4>
+                </div>
+                
+                <!-- Outils -->
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <h4 class="font-medium">AWS</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4 class="font-medium">Power BI</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <h4 class="font-medium">Excel</h4>
+                </div>
+                <div class="skill-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-900 text-3xl">
+                        <i class="fab fa-figma"></i>
+                    </div>
+                    <h4 class="font-medium">Figma</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-amber-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold heading-font text-gray-900 mb-4">Projets</h2>
+                <div class="w-20 h-1 bg-amber-900 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Application de conversion de CV -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 bg-amber-100 flex items-center justify-center">
+                        <i class="fas fa-file-alt text-6xl text-amber-900"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold heading-font mb-2">Application de Conversion de CV</h3>
+                        <p class="text-gray-600 mb-4">
+                            Application sophistiquée qui convertit les CV dans un format spécifique utilisant Spring Boot, IA Générative, Apache Tika et AWS.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">Spring Boot</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">LLM</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">Apache Tika</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">AWS</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">AI Generative</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">RestAPI</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">CRM</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">SCRUM</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Morpion avec IA -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 bg-amber-100 flex items-center justify-center">
+                        <i class="fas fa-gamepad text-6xl text-amber-900"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold heading-font mb-2">Morpion avec IA</h3>
+                        <p class="text-gray-600 mb-4">
+                            Jeu en Python avec Reinforcement Learning (DQN) et algorithmes RL pour un gameplay intelligent.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">Python</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">Flask</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">Deep Learning</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">Reinforcement Learning</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">DQN</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">TensorFlow</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">Notebook Jupyter</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gestion d'entrepôt de données -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 bg-amber-100 flex items-center justify-center">
+                        <i class="fas fa-warehouse text-6xl text-amber-900"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold heading-font mb-2">Gestion d'entrepôt de données</h3>
+                        <p class="text-gray-600 mb-4">
+                            Application desktop pour gérer des entrepôts de données massifs utilisant Spring, JavaFX et MySQL.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">Java</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">JavaFX</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">MySQL</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">JDBC</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Plateforme Weekeys -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 bg-amber-100 flex items-center justify-center">
+                        <i class="fas fa-tools text-6xl text-amber-900"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold heading-font mb-2">Maintenance Plateforme Weekeys</h3>
+                        <p class="text-gray-600 mb-4">
+                            Maintenance et amélioration de la plateforme Weekeys, solution de gestion pour professionnels.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">Maintenance</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">Laravel</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">Tailwind</span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Plateforme Des creche -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 bg-amber-100 flex items-center justify-center">
+                        <i class="fas fa-baby text-6xl text-amber-900"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold heading-font mb-2">Application de gestion de crèches</h3>
+                        <p class="text-gray-600 mb-4">
+                            Projet de fin d’études pour le diplome de Licence de la Génie Logiciel.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">Spring Boot</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">RestAPI</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">React</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">Oracle</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">UML</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">Figma</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Plateforme e-learning -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 bg-amber-100 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-6xl text-amber-900"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold heading-font mb-2">Plateforme E-Learning</h3>
+                        <p class="text-gray-600 mb-4">
+                            Plateforme e-learning complète développée avec REST API en équipe de trois.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">REST API</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">Travail d'équipe</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">MySQL</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">DataWarehouse</span>
+                            <span class="bg-amber-100 text-amber-900 text-xs px-3 py-1 rounded-full">Theamleaf</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold heading-font text-gray-900 mb-4">Expérience & Certifications</h2>
+                <div class="w-20 h-1 bg-amber-900 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Expérience professionnelle -->
+                <div>
+                    <h3 class="text-2xl font-bold heading-font text-gray-900 mb-6">Expérience</h3>
+                    
+                    <div class="space-y-8">
+                        <!-- Stage -->
+                        <div class="relative pl-8 timeline-item">
+                            <div class="absolute left-0 w-4 h-4 rounded-full bg-amber-900 border-4 border-amber-100"></div>
+                            <h4 class="text-lg font-bold text-gray-900">Stage chez Wikeys</h4>
+                            <p class="text-sm text-gray-500 mb-2">04-2025 - 08-2025</p>
+                            <p class="text-gray-700">
+                                Stage de 4 mois en tant qu'Ingénieur de Développement Logiciel, où je contribue au développement de solutions.
+                            </p>
+
+                        </div>
+                        <!-- GDG/WTM -->
+                        <div class="relative pl-8 timeline-item">
+                            <div class="absolute left-0 w-4 h-4 rounded-full bg-amber-900 border-4 border-amber-100"></div>
+                            <h4 class="text-lg font-bold text-gray-900">Membre GDG & WTM</h4>
+                            <p class="text-sm text-gray-500 mb-2">2022 - Présent</p>
+                            <p class="text-gray-700">
+                                Participation active aux Google Developer Groups et Women Techmakers, organisation d'événements tech et promotion de la diversité dans la tech.
+                            </p>
+                        </div>
+                        
+                        <!-- Hackathons -->
+                        <div class="relative pl-8 timeline-item">
+                            <div class="absolute left-0 w-4 h-4 rounded-full bg-amber-900 border-4 border-amber-100"></div>
+                            <h4 class="text-lg font-bold text-gray-900">Participante à plusieurs Hackathons</h4>
+                            <p class="text-sm text-gray-500 mb-2">2021 - Présent</p>
+                            <p class="text-gray-700">
+                                Participation à plusieurs hackathons avec des projets innovants en IA et traitement de données.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certifications -->
+                <div>
+                    <h3 class="text-2xl font-bold heading-font text-gray-900 mb-6">Certifications</h3>
+                    
+                    <div class="space-y-8">
+                        <!-- Relational Database Design -->
+                        <div class="relative pl-8 timeline-item">
+                            <div class="absolute left-0 w-4 h-4 rounded-full bg-amber-900 border-4 border-amber-100"></div>
+                            <h4 class="text-lg font-bold text-gray-900"><a href="https://www.coursera.org/account/accomplishments/verify/QXU7SFBM3N4X">Relational Database Design</a></h4>
+                            <p class="text-sm text-gray-500 mb-2">University of Colorado Boulder</p>
+                            <p class="text-gray-700">
+                                Certification en conception de bases de données relationnelles, couvrant la normalisation, les schémas et les bonnes pratiques.
+                            </p>
+                        </div>
+                        
+                        <!-- Cybersecurity -->
+                        <div class="relative pl-8 timeline-item">
+                            <div class="absolute left-0 w-4 h-4 rounded-full bg-amber-900 border-4 border-amber-100"></div>
+                            <h4 class="text-lg font-bold text-gray-900"><a href="https://www.coursera.org/account/accomplishments/verify/EG7RXVXPSU7Q">Cybersecurity Fundamentals</a></h4>
+                            <p class="text-sm text-gray-500 mb-2">University of Maryland</p>
+                            <p class="text-gray-700">
+                                Certification couvrant les fondamentaux de la cybersécurité, les menaces courantes et les stratégies de protection.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hobbies Section -->
+<section id="hobbies" class="py-16 bg-amber-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold heading-font text-gray-900 mb-4">Centres d'intérêt</h2>
+            <div class="w-20 h-1 bg-amber-900 mx-auto"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Équitation -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                <div class="h-64 bg-amber-100 flex items-center justify-center">
+                    <img class="object-cover w-full h-full" src="/Photos/hourse.jpeg" alt="Équitation"/>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold heading-font mb-2">Équitation</h3>
+                    <p class="text-gray-600 mb-4">
+                       Les chevaux sont mes animaux préférés, et j’ai pratiqué l’équitation depuis mon plus jeune âge
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Voyages -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                <div class="h-64 bg-amber-100 flex items-center justify-center">
+                    <img class="object-cover w-full h-full" src="/Photos/bateau.jpeg" alt="Voyages"/>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold heading-font mb-2">Voyages</h3>
+                    <p class="text-gray-600 mb-4">
+                       J’adore voyager en croisière, et mon rêve est de faire le tour de la Méditerranée un été.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Lecture -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                <div class="h-64 bg-amber-100 flex items-center justify-center">
+                    <img class="object-cover w-full h-full" src="/Photos/agatha.jpeg" alt="Lecture"/>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold heading-font mb-2">Lecture</h3>
+                    <p class="text-gray-600 mb-4">
+                        Grande fan des romans d'Agatha Christie, j'apprécie les intrigues complexes et les résolutions intelligentes de ses histoires.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:justify-between md:items-center">
+                <div class="mb-8 md:mb-0">
+                    <a href="#" class="text-xl font-semibold heading-font text-white flex items-center">
+                        <span class="bg-amber-900 w-8 h-8 rounded-full flex items-center justify-center text-white mr-2">B</span>
+                        Bouchera MAROUF
+                    </a>
+                    <p class="mt-4 text-gray-400 max-w-md">
+                        Ingénieure Data & IA passionnée par la transformation des données en solutions intelligentes.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-sm font-semibold tracking-wider uppercase">Contact</h3>
+                        <div class="mt-4 space-y-2">
+                            <p class="text-gray-400">boucheramarouf7@gmail.com</p>
+                            <p class="text-gray-400">+33 7 71 79 30 26</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold tracking-wider uppercase">Localisation</h3>
+                        <div class="mt-4 space-y-2">
+                            <p class="text-gray-400">France</p>
+                            <p class="text-gray-400">Mobilité nationale</p>
+                            <p class="text-gray-400">Préférence Île-de-France</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-400 text-sm">
+                    &copy; 2023 Bouchera MAROUF. Tous droits réservés.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Card (hidden by default) -->
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="contact-card bg-white rounded-lg shadow-xl overflow-hidden" id="contact-card">
+        <div class="bg-amber-900 h-32 relative">
+            <button id="close-contact" class="absolute top-4 right-4 text-white hover:text-amber-200">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="absolute -bottom-16 left-1/2 transform -translate-x-1/2 w-32 h-32 rounded-full overflow-hidden border-4 border-white bg-amber-100 flex items-center justify-center">
+                <span class="text-5xl text-amber-900"><img  src="/Photos/newnewnewnew.jpeg" /></span>
+            </div>
+        </div>
+        <div class="pt-20 pb-8 px-6 text-center">
+            <h3 class="text-2xl font-bold heading-font text-gray-900 mb-2">Bouchera MAROUF</h3>
+            <p class="text-amber-900 font-medium mb-6">Ingénieure Data & IA</p>
+            
+            <div class="space-y-4 text-left max-w-xs mx-auto">
+                <div class="flex items-start">
+                    <i class="fas fa-envelope text-amber-900 mt-1 mr-3"></i>
+                    <span>boucheramarouf7
+                        <br/>@gmail.com</span>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-phone text-amber-900 mt-1 mr-3"></i>
+                    <span>+33 7 71 79 30 26</span>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-map-marker-alt text-amber-900 mt-1 mr-3"></i>
+                    <span>France - Île-de-France</span>
+                </div>
+            </div>
+            
+            <div class="flex justify-center space-x-4 mt-8">
+                <a href="#" class="w-10 h-10 rounded-full bg-amber-100 text-amber-900 flex items-center justify-center hover:bg-amber-200 transition">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-amber-100 text-amber-900 flex items-center justify-center hover:bg-amber-200 transition">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-amber-100 text-amber-900 flex items-center justify-center hover:bg-amber-200 transition">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // Contact card toggle
+        document.getElementById('contact-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('contact-card').style.display = 'block';
+        });
+        
+        document.getElementById('close-contact').addEventListener('click', function() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('contact-card').style.display = 'none';
+        });
+        
+        document.getElementById('overlay').addEventListener('click', function() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('contact-card').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
